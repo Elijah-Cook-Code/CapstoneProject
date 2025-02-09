@@ -1,0 +1,84 @@
+﻿@page "/clients"
+@inject DatabaseService _databaseService
+@using MudBlazor
+@using MudDb.Data
+@inject AppDbContext dbContext
+@using Microsoft.EntityFrameworkCore
+
+
+<MudContainer>
+    <MudCard>
+        <MudCardContent>
+            <MudTable T="Client" Dense="true" Hover="true" Striped="true">
+                <TableHeader>
+                    <MudTh>Id</MudTh>
+                    <MudTh>Name</MudTh>
+                    <MudTh>Date</MudTh>
+                    <MudTh>A_ChestMeasurement</MudTh>
+                    <MudTh>B_SeatMeasurement</MudTh>
+                    <MudTh>C_WaistMeasurement</MudTh>
+                    <MudTh>D_TrouserMeasurement</MudTh>
+                    <MudTh>E_F_HalfBackMeasurement</MudTh>
+                    <MudTh>G_H_BackNeckToWaistMeasurement</MudTh>
+                    <MudTh>G_I_SyceDepthMeasurement</MudTh>
+                    <MudTh>I_L_SleeveLengthOnePieceMeasurement</MudTh>
+                    <MudTh>E_I_SleeveLengthTwoPieceMeasurement</MudTh>
+                    <MudTh>N_InsideLegMeasurement</MudTh>
+                    <MudTh>P_Q_BodyRiseMeasurement</MudTh>
+                    <MudTh>R_CloseWristMeasurement</MudTh>
+                    <MudTh>Notes</MudTh>
+                </TableHeader>
+
+                <TableBody>
+                    @if (Clients is not null && Clients.Count > 0)
+                    {
+                        @foreach (var client in Clients)
+                        {
+                            <MudTr>
+                                <MudTd>@client.Id</MudTd>
+                                <MudTd>@client.Name</MudTd>
+                                <MudTd>@client.Date.ToShortDateString()</MudTd>
+                                <MudTd>@client.A_ChestMeasurement</MudTd>
+                                <MudTd>@client.B_SeatMeasurement</MudTd>
+                                <MudTd>@client.C_WaistMeasurement</MudTd>
+                                <MudTd>@client.D_TrouserMeasurement</MudTd>
+                                <MudTd>@client.E_F_HalfBackMeasurement</MudTd>
+                                <MudTd>@client.G_H_BackNeckToWaistMeasurement</MudTd>
+                                <MudTd>@client.G_I_SyceDepthMeasurement</MudTd>
+                                <MudTd>@client.I_L_SleeveLengthOnePieceMeasurement</MudTd>
+                                <MudTd>@client.E_I_SleeveLengthTwoPieceMeasurement</MudTd>
+                                <MudTd>@client.N_InsideLegMeasurement</MudTd>
+                                <MudTd>@client.P_Q_BodyRiseMeasurement</MudTd>
+                                <MudTd>@client.R_CloseWristMeasurement</MudTd>
+                                <MudTd>@client.Notes</MudTd>
+                            </MudTr>
+                        }
+                    }
+                    else
+                    {
+                        <MudTr>
+                            <MudTd ColSpan="16">
+                                <MudText>No clients found.</MudText>
+                            </MudTd>
+                        </MudTr>
+                    }
+                </TableBody>
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
+
+@code {
+    private List<Client> Clients = new();
+
+
+
+    protected override async Task OnInitializedAsync()
+
+    {
+
+        Clients = await dbContext.Clients.ToListAsync();
+
+    }
+}
+
