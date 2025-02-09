@@ -20,4 +20,4 @@ A common pitfall is to jump straight into different components. MudBalzor recomm
 <summary>Access the Blazor Console</summary>
 
 - F12 -> Console: To access the console for error messages etc, _While the App is Running_ press F12 and Select the Console Button
-</details>
+</details># CapstoneProject
