@@ -1,75 +1,80 @@
 ﻿@page "/clients"
-@inject DatabaseService _databaseService
 @using MudBlazor
 @using MudDb.Data
-@inject AppDbContext dbContext
 @using Microsoft.EntityFrameworkCore
+@inject AppDbContext dbContext 
+@inject DatabaseService _databaseService
 
 
 <MudContainer>
+    
     <MudCard>
         <MudCardContent>
-            <MudTable T="Client" Dense="true" Hover="true" Striped="true">
-                <TableHeader>
-                    <MudTh>Id</MudTh>
-                    <MudTh>Name</MudTh>
-                    <MudTh>Date</MudTh>
-                    <MudTh>A_ChestMeasurement</MudTh>
-                    <MudTh>B_SeatMeasurement</MudTh>
-                    <MudTh>C_WaistMeasurement</MudTh>
-                    <MudTh>D_TrouserMeasurement</MudTh>
-                    <MudTh>E_F_HalfBackMeasurement</MudTh>
-                    <MudTh>G_H_BackNeckToWaistMeasurement</MudTh>
-                    <MudTh>G_I_SyceDepthMeasurement</MudTh>
-                    <MudTh>I_L_SleeveLengthOnePieceMeasurement</MudTh>
-                    <MudTh>E_I_SleeveLengthTwoPieceMeasurement</MudTh>
-                    <MudTh>N_InsideLegMeasurement</MudTh>
-                    <MudTh>P_Q_BodyRiseMeasurement</MudTh>
-                    <MudTh>R_CloseWristMeasurement</MudTh>
-                    <MudTh>Notes</MudTh>
-                </TableHeader>
+            @if (clients is null)
 
-                <TableBody>
-                    @if (Clients is not null && Clients.Count > 0)
-                    {
-                        @foreach (var client in Clients)
-                        {
-                            <MudTr>
-                                <MudTd>@client.Id</MudTd>
-                                <MudTd>@client.Name</MudTd>
-                                <MudTd>@client.Date.ToShortDateString()</MudTd>
-                                <MudTd>@client.A_ChestMeasurement</MudTd>
-                                <MudTd>@client.B_SeatMeasurement</MudTd>
-                                <MudTd>@client.C_WaistMeasurement</MudTd>
-                                <MudTd>@client.D_TrouserMeasurement</MudTd>
-                                <MudTd>@client.E_F_HalfBackMeasurement</MudTd>
-                                <MudTd>@client.G_H_BackNeckToWaistMeasurement</MudTd>
-                                <MudTd>@client.G_I_SyceDepthMeasurement</MudTd>
-                                <MudTd>@client.I_L_SleeveLengthOnePieceMeasurement</MudTd>
-                                <MudTd>@client.E_I_SleeveLengthTwoPieceMeasurement</MudTd>
-                                <MudTd>@client.N_InsideLegMeasurement</MudTd>
-                                <MudTd>@client.P_Q_BodyRiseMeasurement</MudTd>
-                                <MudTd>@client.R_CloseWristMeasurement</MudTd>
-                                <MudTd>@client.Notes</MudTd>
-                            </MudTr>
-                        }
-                    }
-                    else
-                    {
+            {
+                <MudText Color="Color.Warning">Loading clients...</MudText>
+            }
+
+            else if (!clients.Any())
+
+            {
+                <MudText Color="Color.Secondary">No clients found.</MudText>
+            }
+
+            else
+
+            {
+                <MudText Typo="Typo.h6">Clients count: @clients.Count</MudText>
+
+                <MudTable Items="clients" Hover="true" Striped="true" Dense="true">
+                    <HeaderContent>
+                        <MudTh>Id</MudTh>
+                        <MudTh>Name</MudTh>
+                        <MudTh>Date</MudTh>
+                        <MudTh>A Chest</MudTh>
+                        <MudTh>B Seat</MudTh>
+                        <MudTh>C Waist</MudTh>
+                        <MudTh>D Trouser</MudTh>
+                        <MudTh>E-F Half Back</MudTh>
+                        <MudTh>G-H Back Neck to Waist</MudTh>
+                        <MudTh>G-I Syce Depth</MudTh>
+                        <MudTh>I-L Sleeve Length (One-Piece)</MudTh>
+                        <MudTh>E-I Sleeve Length (Two-Piece)</MudTh>
+                        <MudTh>N Inside Leg</MudTh>
+                        <MudTh>P-Q Body Rise</MudTh>
+                        <MudTh>R Close Wrist</MudTh>
+                        <MudTh>Notes</MudTh>
+                    </HeaderContent>
+
+                    <RowTemplate Context="client">
                         <MudTr>
-                            <MudTd ColSpan="16">
-                                <MudText>No clients found.</MudText>
-                            </MudTd>
+                            <MudTd>@client.Id</MudTd>
+                            <MudTd>@client.Name</MudTd>
+                            <MudTd>@client.Date.ToShortDateString()</MudTd>
+                            <MudTd>@client.A_ChestMeasurement</MudTd>
+                            <MudTd>@client.B_SeatMeasurement</MudTd>
+                            <MudTd>@client.C_WaistMeasurement</MudTd>
+                            <MudTd>@client.D_TrouserMeasurement</MudTd>
+                            <MudTd>@client.E_F_HalfBackMeasurement</MudTd>
+                            <MudTd>@client.G_H_BackNeckToWaistMeasurement</MudTd>
+                            <MudTd>@client.G_I_SyceDepthMeasurement</MudTd>
+                            <MudTd>@client.I_L_SleeveLengthOnePieceMeasurement</MudTd>
+                            <MudTd>@client.E_I_SleeveLengthTwoPieceMeasurement</MudTd>
+                            <MudTd>@client.N_InsideLegMeasurement</MudTd>
+                            <MudTd>@client.P_Q_BodyRiseMeasurement</MudTd>
+                            <MudTd>@client.R_CloseWristMeasurement</MudTd>
+                            <MudTd>@client.Notes</MudTd>
                         </MudTr>
-                    }
-                </TableBody>
-            </MudTable>
+                    </RowTemplate>
+                </MudTable>
+            }
         </MudCardContent>
     </MudCard>
 </MudContainer>
 
 @code {
-    private List<Client> Clients = new();
+    private List<Client> clients;
 
 
 
@@ -77,8 +82,7 @@
 
     {
 
-        Clients = await dbContext.Clients.ToListAsync();
+        clients = await dbContext.Clients.ToListAsync();
 
     }
 }
-

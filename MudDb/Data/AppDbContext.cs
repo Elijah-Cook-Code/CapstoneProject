@@ -12,23 +12,20 @@ namespace MudDb.Data
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            // ✅ Fix: Use a cross-platform database path
-            var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            DbPath = Path.Combine(appDataPath, "Sewing.db");
+            // ✅ Explicitly assign DbPath
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            DbPath = Path.Combine(path, "Sewing.db");
 
-            // ✅ Log Database Path for Debugging
-            Debug.WriteLine($"📂 Database Path: {DbPath}");
-            Console.WriteLine($"📂 Database Path: {DbPath}");
+            Debug.WriteLine($"📂 ef Database Path: {DbPath}");
+            Console.WriteLine($"📂 ef Database Path: {DbPath}");
         }
-
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Sewing.db");
-                optionsBuilder.UseSqlite($"Filename={dbPath}");  // ✅ Use Correct Path
+                // ✅ Now DbPath will always be assigned before use
+                optionsBuilder.UseSqlite($"Filename={DbPath}");
             }
         }
     }

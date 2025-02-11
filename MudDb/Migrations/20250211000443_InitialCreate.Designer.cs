@@ -11,8 +11,8 @@ using MudDb.Data;
 namespace MudDb.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250209174855_UpdateClientSchema")]
-    partial class UpdateClientSchema
+    [Migration("20250211000443_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

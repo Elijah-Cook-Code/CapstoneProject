@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace MudDb.Data
 {
@@ -12,7 +10,6 @@ namespace MudDb.Data
     {
         private readonly AppDbContext _context;
 
-        
         public DatabaseService(AppDbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -24,7 +21,6 @@ namespace MudDb.Data
             {
                 Console.WriteLine("🔍 Running DB Query: SELECT * FROM Clients");
                 var clients = await _context.Clients.ToListAsync();
-
                 Console.WriteLine($"📦 Retrieved {clients.Count} clients from database.");
 
                 if (clients.Count > 0)
@@ -49,9 +45,7 @@ namespace MudDb.Data
         }
 
 
-
-
-
+        
 
         public async Task AddClientAsync(Client client)
         {
