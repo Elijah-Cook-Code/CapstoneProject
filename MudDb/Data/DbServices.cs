@@ -19,27 +19,27 @@ namespace MudDb.Data
         {
             try
             {
-                Console.WriteLine("🔍 Running DB Query: SELECT * FROM Clients");
+                
                 var clients = await _context.Clients.ToListAsync();
-                Console.WriteLine($"📦 Retrieved {clients.Count} clients from database.");
+                
 
                 if (clients.Count > 0)
                 {
                     foreach (var client in clients)
                     {
-                        Console.WriteLine($"📝 Client ID: {client.Id}, Name: {client.Name}");
+                        Console.WriteLine($" Client ID: {client.Id}, Name: {client.Name}");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("⚠️ No clients in database.");
+                    Console.WriteLine(" No clients in database.");
                 }
 
                 return clients;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"🚨 Database Error: {ex.Message}");
+                Console.WriteLine($" Database Error: {ex.Message}");
                 return new List<Client>(); // Prevent crashes
             }
         }

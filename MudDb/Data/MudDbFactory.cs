@@ -13,7 +13,7 @@ namespace MudDb.Data
             var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var dbPath = Path.Combine(path, "Sewing.db");
 
-            Console.WriteLine($"📂 Factory Database Path: {dbPath}");
+            Console.WriteLine($"Factory Database Path: {dbPath}");
             optionsBuilder.UseSqlite($"Filename={dbPath}");
 
             return new AppDbContext(optionsBuilder.Options);

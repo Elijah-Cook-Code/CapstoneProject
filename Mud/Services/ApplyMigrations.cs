@@ -18,9 +18,9 @@ namespace MudDb.Services
                     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
                     // ✅ Log the database path to confirm it's the right one
-                    Console.WriteLine($"📂 Applying migrations to database at: {context.DbPath}");
+                    Console.WriteLine($" Applying migrations to database at: {context.DbPath}");
                     context.Database.Migrate(); // Apply any pending migrations
-                    Console.WriteLine("✅ Database migration completed successfully.");
+                    Console.WriteLine(" Database migration completed successfully.");
 
                  
                 }

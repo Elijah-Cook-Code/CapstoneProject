@@ -29,42 +29,44 @@
 
                 <MudTable Items="clients" Hover="true" Striped="true" Dense="true">
                     <HeaderContent>
-                        <MudTh>Id</MudTh>
-                        <MudTh>Name</MudTh>
-                        <MudTh>Date</MudTh>
-                        <MudTh>A Chest</MudTh>
-                        <MudTh>B Seat</MudTh>
-                        <MudTh>C Waist</MudTh>
-                        <MudTh>D Trouser</MudTh>
-                        <MudTh>E-F Half Back</MudTh>
-                        <MudTh>G-H Back Neck to Waist</MudTh>
-                        <MudTh>G-I Syce Depth</MudTh>
-                        <MudTh>I-L Sleeve Length (One-Piece)</MudTh>
-                        <MudTh>E-I Sleeve Length (Two-Piece)</MudTh>
-                        <MudTh>N Inside Leg</MudTh>
-                        <MudTh>P-Q Body Rise</MudTh>
-                        <MudTh>R Close Wrist</MudTh>
-                        <MudTh>Notes</MudTh>
+                        <MudTr>
+                            <MudTh Style="width: 50px;">Id</MudTh>
+                            <MudTh Style="width: 150px;">Name</MudTh>
+                            <MudTh Style="width: 120px;">Date</MudTh>
+                            <MudTh Style="width: 100px;">A Chest</MudTh>
+                            <MudTh Style="width: 100px;">B Seat</MudTh>
+                            <MudTh Style="width: 100px;">C Waist</MudTh>
+                            <MudTh Style="width: 100px;">D Trouser</MudTh>
+                            <MudTh Style="width: 130px;">E-F Half Back</MudTh>
+                            <MudTh Style="width: 160px;">G-H Back Neck to Waist</MudTh>
+                            <MudTh Style="width: 130px;">G-I Syce Depth</MudTh>
+                            <MudTh Style="width: 170px;">I-L Sleeve Length (One-Piece)</MudTh>
+                            <MudTh Style="width: 180px;">E-I Sleeve Length (Two-Piece)</MudTh>
+                            <MudTh Style="width: 100px;">N Inside Leg</MudTh>
+                            <MudTh Style="width: 100px;">P-Q Body Rise</MudTh>
+                            <MudTh Style="width: 120px;">R Close Wrist</MudTh>
+                            <MudTh Style="width: 200px;">Notes</MudTh>
+                        </MudTr>
                     </HeaderContent>
 
                     <RowTemplate Context="client">
                         <MudTr>
-                            <MudTd>@client.Id</MudTd>
-                            <MudTd>@client.Name</MudTd>
-                            <MudTd>@client.Date.ToShortDateString()</MudTd>
-                            <MudTd>@client.A_ChestMeasurement</MudTd>
-                            <MudTd>@client.B_SeatMeasurement</MudTd>
-                            <MudTd>@client.C_WaistMeasurement</MudTd>
-                            <MudTd>@client.D_TrouserMeasurement</MudTd>
-                            <MudTd>@client.E_F_HalfBackMeasurement</MudTd>
-                            <MudTd>@client.G_H_BackNeckToWaistMeasurement</MudTd>
-                            <MudTd>@client.G_I_SyceDepthMeasurement</MudTd>
-                            <MudTd>@client.I_L_SleeveLengthOnePieceMeasurement</MudTd>
-                            <MudTd>@client.E_I_SleeveLengthTwoPieceMeasurement</MudTd>
-                            <MudTd>@client.N_InsideLegMeasurement</MudTd>
-                            <MudTd>@client.P_Q_BodyRiseMeasurement</MudTd>
-                            <MudTd>@client.R_CloseWristMeasurement</MudTd>
-                            <MudTd>@client.Notes</MudTd>
+                            <MudTd Style="width: 50px;">@client.Id</MudTd>
+                            <MudTd Style="width: 150px;">@client.Name</MudTd>
+                            <MudTd Style="width: 120px;">@client.Date.ToShortDateString()</MudTd>
+                            <MudTd Style="width: 100px;">@client.A_ChestMeasurement</MudTd>
+                            <MudTd Style="width: 100px;">@client.B_SeatMeasurement</MudTd>
+                            <MudTd Style="width: 100px;">@client.C_WaistMeasurement</MudTd>
+                            <MudTd Style="width: 100px;">@client.D_TrouserMeasurement</MudTd>
+                            <MudTd Style="width: 130px;">@client.E_F_HalfBackMeasurement</MudTd>
+                            <MudTd Style="width: 160px;">@client.G_H_BackNeckToWaistMeasurement</MudTd>
+                            <MudTd Style="width: 130px;">@client.G_I_SyceDepthMeasurement</MudTd>
+                            <MudTd Style="width: 170px;">@client.I_L_SleeveLengthOnePieceMeasurement</MudTd>
+                            <MudTd Style="width: 180px;">@client.E_I_SleeveLengthTwoPieceMeasurement</MudTd>
+                            <MudTd Style="width: 100px;">@client.N_InsideLegMeasurement</MudTd>
+                            <MudTd Style="width: 100px;">@client.P_Q_BodyRiseMeasurement</MudTd>
+                            <MudTd Style="width: 120px;">@client.R_CloseWristMeasurement</MudTd>
+                            <MudTd Style="width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">@client.Notes</MudTd>
                         </MudTr>
                     </RowTemplate>
                 </MudTable>

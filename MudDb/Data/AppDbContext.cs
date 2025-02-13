@@ -16,8 +16,8 @@ namespace MudDb.Data
             var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             DbPath = Path.Combine(path, "Sewing.db");
 
-            Debug.WriteLine($"📂 ef Database Path: {DbPath}");
-            Console.WriteLine($"📂 ef Database Path: {DbPath}");
+            Debug.WriteLine($" ef Database Path: {DbPath}");
+            Console.WriteLine($" ef Database Path: {DbPath}");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
